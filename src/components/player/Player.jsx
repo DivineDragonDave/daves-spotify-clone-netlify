@@ -23,7 +23,7 @@ const Player = ({ spotifyApi }) => {
 		document.body.appendChild(script);
 		window.onSpotifyWebPlaybackSDKReady = () => {
 			const player = new window.Spotify.Player({
-				name: 'Techover Playback',
+				name: 'Daves Playback',
 				getOAuthToken: (cb) => {
 					cb(token);
 				},
