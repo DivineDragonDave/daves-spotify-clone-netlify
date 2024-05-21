@@ -11,7 +11,7 @@ const Home = () => {
 				alignItems: 'center',
 				flexDirection: 'column',
 				gap: 5,
-				marginTop: -10
+				marginTop: -14
 			}}
 		>
 			<img src="/DR.ico" alt="DR" style={{ maxWidth: '30%', maxHeight: '30%' }} />
