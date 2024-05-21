@@ -15,12 +15,13 @@ const SideNav = ({ spotifyApi, token }) => {
 		console.log('token:', token);
 
 		async function getPlaylists() {
-			if (!spotifyApi) {
-				console.log('spotifyApi is not defined');
+			if (!spotifyApi || !token) {
+				console.log('spotifyApi or token is not defined');
 				return;
 			}
 
 			try {
+				spotifyApi.setAccessToken(token[0]); // Sätt access token här
 				console.log('Fetching playlists...');
 				const data = await spotifyApi.getUserPlaylists();
 				console.log('Playlists data:', data); // Lägg till logg här
