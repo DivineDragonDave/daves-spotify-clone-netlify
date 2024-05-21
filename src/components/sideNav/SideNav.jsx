@@ -10,10 +10,18 @@ const SideNav = ({ spotifyApi, token }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
+		console.log('useEffect triggered');
+		console.log('spotifyApi:', spotifyApi);
+		console.log('token:', token);
+
 		async function getPlaylists() {
-			if (!spotifyApi) return;
+			if (!spotifyApi) {
+				console.log('spotifyApi is not defined');
+				return;
+			}
 
 			try {
+				console.log('Fetching playlists...');
 				const data = await spotifyApi.getUserPlaylists();
 				console.log('Playlists data:', data); // Lägg till logg här
 				setPlaylists(data.body.items);
@@ -23,6 +31,7 @@ const SideNav = ({ spotifyApi, token }) => {
 				setLoading(false);
 			}
 		}
+
 		getPlaylists();
 	}, [spotifyApi, token]);
 
