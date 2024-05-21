@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Divider } from '@mui/material';
-import NavItem from '../Naviteam/NavItem';
+import NavItem from '../NavItem/NavItem';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import NavPlaylist from '../NavPlaylist/NavPlaylist';
 
 const SideNav = ({ spotifyApi, token }) => {
-	const [playlists, setplaylists] = useState([]);
+	const [playlists, setPlaylists] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		async function getPlaylists() {
 			if (!spotifyApi) return;
 
-			const data = await spotifyApi.getUserPlaylists();
-			setplaylists(data.body.items);
-			setLoading(false);
+			try {
+				const data = await spotifyApi.getUserPlaylists();
+				setPlaylists(data.body.items);
+			} catch (error) {
+				console.error('Error fetching playlists:', error);
+			} finally {
+				setLoading(false);
+			}
 		}
 		getPlaylists();
 	}, [spotifyApi, token]);
