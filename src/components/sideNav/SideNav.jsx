@@ -15,6 +15,7 @@ const SideNav = ({ spotifyApi, token }) => {
 
 			try {
 				const data = await spotifyApi.getUserPlaylists();
+				console.log('Playlists data:', data); // Lägg till logg här
 				setPlaylists(data.body.items);
 			} catch (error) {
 				console.error('Error fetching playlists:', error);
