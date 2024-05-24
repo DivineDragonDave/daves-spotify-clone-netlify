@@ -20,7 +20,6 @@ const PlayerControls = ({ player, is_paused, duration, progress }) => {
 		setCurrentProgress(progress);
 	}, [progress]);
 
-	console.log(player);
 	if (!player) return <Box>Transfer playback</Box>;
 
 	return (

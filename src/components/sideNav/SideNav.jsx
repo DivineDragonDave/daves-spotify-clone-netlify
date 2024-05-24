@@ -10,21 +10,16 @@ const SideNav = ({ spotifyApi, token }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		console.log('useEffect triggered');
-		console.log('spotifyApi:', spotifyApi);
-		console.log('token:', token);
-
 		async function getPlaylists() {
 			if (!spotifyApi || !token) {
-				console.log('spotifyApi or token is not defined');
 				return;
 			}
 
 			try {
 				spotifyApi.setAccessToken(token[0]); // Sätt access token här
-				console.log('Fetching playlists...');
+
 				const data = await spotifyApi.getUserPlaylists();
-				console.log('Playlists data:', data); // Lägg till logg här
+
 				setPlaylists(data.body.items);
 			} catch (error) {
 				console.error('Error fetching playlists:', error);
